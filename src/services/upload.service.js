@@ -1,6 +1,8 @@
 import express from 'express';
 import dirpath from 'path';
 import fileUpload from 'express-fileupload';
+import fs from 'fs';
+
 const app = express();
 app.use(fileUpload({ createParentPath: true }));
 
@@ -15,11 +17,6 @@ export async function uploadService(req, res, next) {
     } else {
         var image = req.files.sampleFile;
         console.log(image);
-        // res.json({
-        //     message: 'trouvé',
-        //     image: image.name
-        // });
-
         let sampleFile = req.files.sampleFile;
         const uploadPath = dirpath.join(__dirname, "/uploads", sampleFile.name);
         console.log(uploadPath);
@@ -33,7 +30,16 @@ export async function uploadService(req, res, next) {
                 size: sampleFile.size
             }
         });
+
     }
+    renameFile();
+}
+
+function renameFile() {
+
+    console.log(__dirname);
+
+
 }
 
 
