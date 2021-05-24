@@ -16,6 +16,7 @@ export async function login({ email, password }) {
     const userReturn = omitHash(user, token);
     return {
         status: 200,
+        message: 'Connexion OK!',
         args: userReturn,
         token: token
     };
@@ -58,7 +59,7 @@ export async function create(params) {
         params.hash = await bcrypt.hash(params.password, 10);
     }
     // save user
-    await User.create(params);
+    return await User.create(params);
 }
 
 

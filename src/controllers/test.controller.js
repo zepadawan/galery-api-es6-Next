@@ -11,7 +11,7 @@
 
      const oldPath = path.join(__dirname, '/uploads', 'toto.txt');
      //     const newPath = path.join(__dirname, '/uploads/other', 'titi.txt');
-     const newPath = path.join('https://www.christianbialy.fr/uploads', 'titi.txt');
+     const newPath = path.join('http://www.christianbialy.com/uploads', 'titi.txt');
 
      fs.copyFile(oldPath, newPath, (err => {
          if (err) {
@@ -45,17 +45,8 @@
                  .catch(error => {})
          })
          .catch(e => console.log(e));
+     return "OK";
 
  }
- //   fs.rename(oldPath, newPath, (err => {
- //     if (err) {
- //         console.log('ERROR ' + err);
- //     } else {
- //         console.log('Copie OK!');
- //     }
- // }))
-
-
-
 
  export default {}

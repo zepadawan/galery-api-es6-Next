@@ -1,4 +1,4 @@
-import { getAll, getById, create } from '../services/oeuvre.service.js';
+import { getAll, getById, create, update } from '../services/oeuvre.service.js';
 
 export async function getAllOeuvres(req, res, next) {
     return getAll()
@@ -21,8 +21,6 @@ export function getOeuvreById(req, res, next) {
 
 
 export function createOeuvre(req, res, next) {
-    // console.log(req.body.image);
-    // console.log(req.body.tableau);
     create(req.body.tableau, res, next)
         .then((oeuvre) => res.json({
             status: 201,
@@ -34,6 +32,18 @@ export function createOeuvre(req, res, next) {
             message: 'KOKOKO'
         }));
 
+}
+
+export function updateOeuvre(req, res, next) {
+    return update(req.params.id, req.body)
+        .then(() => {
+            console.log('Update OK');
+            res.json({
+                status: 202,
+                message: 'Update OK !'
+            })
+        })
+        .catch(next);
 }
 
 

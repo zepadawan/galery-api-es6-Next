@@ -23,6 +23,13 @@ export async function create(req, res, next) {
 
 }
 
+// modification d'une Oeuvre
+// *******************
+export async function update(aid, params) {
+    return await Oeuvre.update(params, { where: { id: aid } });
+}
+
+
 // helper functions
 async function getOeuvre(id) {
     const oeuvre = await Oeuvre.findByPk(id);
