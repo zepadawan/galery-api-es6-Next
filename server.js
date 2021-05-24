@@ -6,6 +6,7 @@ import fileUpload from 'express-fileupload';
 import morgan from 'morgan';
 import https from 'https';
 import http from 'http';
+import path from 'path';
 import fs from 'fs';
 import _ from 'lodash';
 import uploadService from './src/services/upload.service.js';
@@ -33,11 +34,12 @@ console.log('__dirname = ' + __dirname);
 // uploads
 app.use('/upload', uploadService);
 
+// app.use(express.static('/public'));
+// app.use('/static', express.static(__dirname + '/public'));
+app.use('/public', express.static(path.join(__dirname, '/public')));
+
 import routes from './src/routes/routes.js';
-
 app.use('/', routes);
-
-
 
 var host;
 console.log(process.env.NODE_ENV);

@@ -10,8 +10,7 @@ const config = {
   server: {
     portServer: 3000,
     host_dev: 'https://localhost',
-    //        host_prod: 'https://www.christianbialy.fr',
-    host_prod: 'http://www.galeryofbialy.eu',
+    host_prod: 'https://galeryofbialy.eu',
   },
 
   dbConfig: {
