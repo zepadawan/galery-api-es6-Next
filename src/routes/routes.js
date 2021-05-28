@@ -17,9 +17,9 @@ router.get('/users/:id', getUserById);
 router.delete('/users/:id', deleteUser);
 
 // Oeuvres
-router.get('/oeuvres/get', getAllOeuvres);
+router.get('/oeuvres', getAllOeuvres);
 router.get('/oeuvres/:id', getOeuvreById);
-router.post('/oeuvres/register', createOeuvre);
+router.post('/oeuvres', createOeuvre);
 router.put('/oeuvres/:id', updateOeuvre);
 
 

@@ -29,7 +29,6 @@ app.use((req, res, next) => {
 })
 
 global.__dirname = process.cwd();
-console.log('__dirname = ' + __dirname);
 
 // uploads
 app.use('/upload', uploadService);
@@ -42,13 +41,11 @@ import routes from './src/routes/routes.js';
 app.use('/', routes);
 
 var host;
-console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'dev') {
   host = config.server.host_dev
 } else {
   host = config.server.host_prod
 }
-console.log(host);
 
 
 app.set('port', port);

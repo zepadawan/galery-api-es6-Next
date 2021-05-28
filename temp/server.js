@@ -21,16 +21,14 @@ app.use(express.static('uploads'));
 app.use(morgan('dev'));
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, HEAD, PATCH, OPTIONS, TRACE');
-    next();
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, HEAD, PATCH, OPTIONS, TRACE');
+  next();
 })
 
 
 global.__dirname = process.cwd();
-console.log('__dirname = ' + __dirname);
-
 
 // uploads
 import uploadService from './src/services/upload.service.js';
@@ -44,9 +42,9 @@ var port = normalizePort(process.env.PORT || '3000');
 var host;
 console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'dev') {
-    host = config.server.host_dev
+  host = config.server.host_dev
 } else {
-    host = config.server.host_prod
+  host = config.server.host_prod
 }
 
 host = 'https://178.170.8.35';
@@ -55,8 +53,8 @@ console.log(host);
 
 app.set('port', port);
 var httpOptions = {
-    key: fs.readFileSync("assets/privatekey.pem"),
-    cert: fs.readFileSync("assets/certificate.pem")
+  key: fs.readFileSync("assets/privatekey.pem"),
+  cert: fs.readFileSync("assets/certificate.pem")
 }
 
 var server = https.createServer(httpOptions, app);
@@ -71,22 +69,22 @@ app.get('/', (req, res) => res.send('Hello my World'));
 
 // _helpers
 function onListening() {
-    var addr = server.address();
-    var bind = typeof addr === 'string' ?
-        'pipe ' + addr :
-        'port ' + addr.port;
-    //   debug('Listening on ' + bind);
+  var addr = server.address();
+  var bind = typeof addr === 'string' ?
+    'pipe ' + addr :
+    'port ' + addr.port;
+  //   debug('Listening on ' + bind);
 }
 
 function normalizePort(val) {
-    var port = parseInt(val, 10);
-    if (isNaN(port)) {
-        // named pipe
-        return val;
-    }
-    if (port >= 0) {
-        // port number
-        return port;
-    }
-    return false;
+  var port = parseInt(val, 10);
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+  return false;
 }
