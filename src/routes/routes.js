@@ -3,8 +3,8 @@ import express from 'express';
 const router = express.Router();
 
 import { getAllUsers, getUserById, loginUser, registerUser, updateUser, deleteUser } from '../controllers/user.controller.js';
-import { getAllOeuvres, getOeuvreById, createOeuvre, updateOeuvre } from '../controllers/oeuvre.controller.js';
-import { getAllCategories, getCategorieById, } from '../controllers/oeuvre_categorie.controller.js'
+import { getAllOeuvres, getOeuvreById, createOeuvre, updateOeuvre, deleteOeuvre } from '../controllers/oeuvre.controller.js';
+import { getAllCategories, getCategorieById, createCategorie, updateCategorie, deleteCategorie } from '../controllers/categorie.controller.js'
 import { renameFile, send_file_using_promise } from '../controllers/test.controller.js';
 import { getAllTextes, getTexteById, createTexte, updateTexte, deleteTexte } from '../controllers/texte.controller.js';
 
@@ -21,11 +21,15 @@ router.get('/oeuvres', getAllOeuvres);
 router.get('/oeuvres/:id', getOeuvreById);
 router.post('/oeuvres', createOeuvre);
 router.put('/oeuvres/:id', updateOeuvre);
+router.delete('/oeuvres/:id', deleteOeuvre);
 
 
 // Categories des oeuvres
 router.get('/categories', getAllCategories);
 router.get('/categories/:id', getCategorieById);
+router.post('/categories', createCategorie);
+router.put('/categories/:id', updateCategorie);
+router.delete('/categories/:id', deleteCategorie);
 
 // textes
 router.get('/textes', getAllTextes);

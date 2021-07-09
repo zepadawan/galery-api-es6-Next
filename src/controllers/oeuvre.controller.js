@@ -1,4 +1,4 @@
-import { getAll, getById, create, update } from '../services/oeuvre.service.js';
+import { getAll, getById, create, update, _delete } from '../services/oeuvre.service.js';
 
 export async function getAllOeuvres(req, res, next) {
   return getAll()
@@ -45,6 +45,17 @@ export function updateOeuvre(req, res, next) {
       })
     })
     .catch(next);
+}
+
+export function deleteOeuvre(req, res, next){
+  return _delete(req.params.id, res)
+  .then(oeuvre => res.json({
+    oeuvre_numero: req.params.id,
+      status: 203,
+      message: `oeuvre is deleted`
+  }))
+  .catch(next);
+
 }
 
 

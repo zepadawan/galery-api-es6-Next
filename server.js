@@ -10,6 +10,8 @@ import path from 'path';
 import fs from 'fs';
 import _ from 'lodash';
 import uploadService from './src/services/upload.service.js';
+import sendmail from './src/services/email.service.js';
+import readDirectory from './src/services/files-directory.service.js';
 
 const app = express();
 app.use(cors());
@@ -32,6 +34,12 @@ global.__dirname = process.cwd();
 
 // uploads
 app.use('/upload', uploadService);
+
+// Files of Folder
+app.use('/files', readDirectory);
+
+// email
+app.post('/email', sendmail);
 
 // app.use(express.static('/public'));
 // app.use('/static', express.static(__dirname + '/public'));

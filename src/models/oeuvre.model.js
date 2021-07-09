@@ -12,7 +12,7 @@ const Oeuvre = sequelize.define(
   dimension: { type: Sequelize.STRING, allowNull: true },
   annee_creation: { type: Sequelize.STRING, allowNull: true },
   a_vendre: { type: Sequelize.INTEGER, allowNull: true },
-
+  visible: { type: Sequelize.INTEGER, allowNull: true },
 },
 )
 

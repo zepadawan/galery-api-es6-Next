@@ -26,7 +26,14 @@ export async function create(req, res, next) {
 // modification d'une Oeuvre
 // *******************
 export async function update(aid, params) {
-    return await Oeuvre.update(params, { where: { id: aid } });
+  return await Oeuvre.update(params, { where: { id: aid } });
+}
+
+// Suppression d'une Oeuvre
+// *******************
+export async function _delete(aid) {
+  const oeuvre = await getOeuvre(aid);
+  await oeuvre.destroy();
 }
 
 
